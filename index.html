@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>what is this</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 320px;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 22px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        #yesBtn {
+            background-color: #e80f0f;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #2f2f2f;
+            color: white;
+            position: fixed;
+            transition: top 0.45s ease, left 0.45s ease;
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            color: #ff1e56;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Will you be my Valentine po? </h1>
+
+        <img src="blushing cat.jpg" alt="blushing cat">
+
+        <div>
+            <button id="yesBtn">Yes 💖</button>
+            <button id="noBtn">No 😭</button>
+        </div>
+
+        <p class="message" id="message">
+            Syempre wala ka choice <br>
+            Sa akin ka lang tomorrow bwahahahaha
+        </p>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const message = document.getElementById("message");
+
+        // Initial NO button position
+        noBtn.style.top = "60%";
+        noBtn.style.left = "55%";
+
+        function moveNoButton() {
+            const padding = 20;
+
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        }
+
+        noBtn.addEventListener("mouseenter", moveNoButton);
+        noBtn.addEventListener("click", moveNoButton);
+
+        yesBtn.addEventListener("click", () => {
+            message.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
